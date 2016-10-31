@@ -11,9 +11,15 @@ class Synth extends React.Component {
     this.props = props;
   }
   onKeyDown(e){
+    if(this.props.isRecording){
+      this.props.addNotes(this.props.notes);
+    }
     this.props.keyPressed(e.key);
   }
   onKeyUp(e){
+    if(this.props.isRecording){
+      this.props.addNotes(this.props.notes);
+    }
     this.props.keyReleased(e.key);
   }
   componentDidMount(){
@@ -35,7 +41,7 @@ class Synth extends React.Component {
     let list = NOTE_NAMES.map( (note, idx) => {
       if(this.props.notes.includes(note))
       {
-        return note;
+        return <NoteKey key={note} note={note}></NoteKey>;
       }
     });
     this.playNotes();

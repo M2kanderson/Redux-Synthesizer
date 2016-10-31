@@ -1,3 +1,5 @@
+import React from 'react';
+
 const NoteKey = ({note, pressed}) => (
   <div>
     {note}

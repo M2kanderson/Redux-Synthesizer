@@ -1,34 +1,36 @@
-import { KEY_PRESSED, KEY_RELEASED } from '../actions/notes_actions';
-import { NOTE_NAMES } from '../util/tones'
+import  { KEY_PRESSED,
+          KEY_RELEASED,
+          GROUP_UPDATE
+        } from '../actions/notes_actions';
 
-const _defaultState = [];
+import { NOTE_NAMES } from '../util/tones';
+import union from 'lodash/union';
 
-const notesReducer = (oldState = _defaultState, action) => {
-Object.freeze(oldState);
-const index = oldState.indexOf(action.key);
+const notesReducer = (state = [], action) => {
+  Object.freeze(state)
+  const validNote = NOTE_NAMES.includes(action.key); // check if the key corresponds to a note frequency
+  const idx = state.indexOf(action.key); // check to see if note is in previous state
 
-switch (action.type) {
-  case KEY_PRESSED:
-    if(NOTE_NAMES.includes(action.key) && index === -1)
-    {
-      return [...oldState, action.key]
-    }
-    else {
-      return oldState;
-    }
-  case KEY_RELEASED:
-    if(index !== -1)
-    {
-      return [...oldState.slice(0,index), oldState.slice(index + 1)];
-    }
-    else {
-      return oldState;
-    }
-
-  default:
-    return oldState;
-
+  switch(action.type) {
+    case KEY_PRESSED:
+      if (validNote && idx === -1) {
+        return [
+          ...state,
+          action.key
+        ];
+      }
+      return state;
+    case KEY_RELEASED:
+      if (idx !== -1) {
+        return [
+          ...state.slice(0, idx),
+          ...state.slice(idx + 1)
+        ];
+      }
+      return state;
+    default:
+      return state;
   }
-}
+};
 
 export default notesReducer;
