@@ -16,7 +16,6 @@ const tracksReducer = (state = {}, action) =>{
             ...state[currTrackId].roll,
             {notes: [], timeSlice: action.timeNow - state[currTrackId].timeStart}]}});
       case ADD_NOTES:
-      console.log(state);
         return merge({}, state, {[currTrackId]:{roll: [...state[currTrackId].roll, {notes: action.notes, timeSlice: action.timeNow - state[currTrackId].timeStart}]}});
       default:
         return state;
