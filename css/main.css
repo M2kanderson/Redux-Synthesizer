@@ -1,0 +1,25 @@
+
+
+.play-button, .start-button, .stop-button{
+  color: white;
+  font-size: 14px;
+  border: none;
+  background: #66a0ff;
+  border-radius: 3px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.start-button{
+  background: #44915f;
+}
+
+.stop-button{
+  background: #ef3510;
+}
+
+.play-button:disabled, .stop-button:disabled, .start-button:disabled{
+  background: #c3cbd8;
+  cursor:default;
+}
