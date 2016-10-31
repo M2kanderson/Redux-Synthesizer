@@ -1,14 +1,15 @@
 import { KEY_PRESSED, KEY_RELEASED } from '../actions/notes_actions';
-import NOTE_NAMES from '../util/tones'
+import { NOTE_NAMES } from '../util/tones'
 
 const _defaultState = [];
 
-export const reducer = (oldState = _defaultState, action) => {
-Object.freeze(state);
+const notesReducer = (oldState = _defaultState, action) => {
+Object.freeze(oldState);
+const index = oldState.indexOf(action.key);
 
 switch (action.type) {
   case KEY_PRESSED:
-    if(NOTE_NAMES[action.key])
+    if(NOTE_NAMES.includes(action.key) && index === -1)
     {
       return [...oldState, action.key]
     }
@@ -16,9 +17,8 @@ switch (action.type) {
       return oldState;
     }
   case KEY_RELEASED:
-    if(NOTE_NAMES[action.key])
+    if(index !== -1)
     {
-      let index = oldState.indexOf(action.key);
       return [...oldState.slice(0,index), oldState.slice(index + 1)];
     }
     else {
@@ -30,3 +30,5 @@ switch (action.type) {
 
   }
 }
+
+export default notesReducer;
