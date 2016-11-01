@@ -1,7 +1,7 @@
 import React from 'react';
 
 const NoteKey = ({note, pressed}) => (
-  <div>
+  <div className={pressed ? 'pressed' : 'not-pressed'}>
     {note}
   </div>
 );

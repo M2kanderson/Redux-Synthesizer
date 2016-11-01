@@ -11,17 +11,22 @@ class Synth extends React.Component {
     this.props = props;
   }
   onKeyDown(e){
-    this.props.keyPressed(e.key);
-    if(this.props.isRecording){
-      this.props.addNotes(this.props.notes);
+    if(e.target.className !== 'rename-input')
+    {
+      this.props.keyPressed(e.key);
+      if(this.props.isRecording){
+        this.props.addNotes(this.props.notes);
+      }
     }
-
   }
   onKeyUp(e){
-    this.props.keyReleased(e.key);
-    if(this.props.isRecording){
+    if(e.target.className !== 'rename-input')
+    {
+      this.props.keyReleased(e.key);
+      if(this.props.isRecording){
 
-      this.props.addNotes(this.props.notes);
+        this.props.addNotes(this.props.notes);
+      }
     }
 
   }
@@ -42,14 +47,11 @@ class Synth extends React.Component {
   }
   render() {
     let list = NOTE_NAMES.map( (note, idx) => {
-      if(this.props.notes.includes(note))
-      {
-        return <NoteKey key={note} note={note}></NoteKey>;
-      }
+        return <NoteKey key={note} note={note} pressed={this.props.notes.includes(note)}></NoteKey>;
     });
     this.playNotes();
     return (
-      <div>
+      <div className='keyboard'>
       {list}
       </div>
     );

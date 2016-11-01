@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { startPlaying, stopPlaying } from "../../actions/playing_actions";
 import { groupUpdate } from '../../actions/notes_actions';
+import { deleteTrack, renameTrack } from '../../actions/tracks_actions';
 import Jukebox from './jukebox';
 
 const mapStateToProps = (state) => ({
@@ -29,7 +30,9 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(stopPlaying());
       }
     }, 1)
-  }
+  },
+  onDelete: (id) => e => dispatch(deleteTrack(id)),
+  onRename: (id, name) => e => dispatch(renameTrack(id,name))
 });
 
 

@@ -1,6 +1,6 @@
 
 
-.play-button, .start-button, .stop-button{
+.play-button, .start-button, .stop-button, .delete-button{
   color: white;
   font-size: 14px;
   border: none;
@@ -19,7 +19,81 @@
   background: #ef3510;
 }
 
-.play-button:disabled, .stop-button:disabled, .start-button:disabled{
+.delete-button{
+  background: red;
+}
+
+.play-button:disabled, .stop-button:disabled, .start-button:disabled, .delete-button:disabled{
   background: #c3cbd8;
   cursor:default;
+}
+
+.keyboard{
+  display: flex;
+  flex-direction: row;
+}
+
+.pressed{
+  border-radius: 5px;
+  font-size: 24px;
+  color: white;
+  width: 60px;
+  height: 200px;
+  border: 1px solid black;
+  background: #9ec3ff;
+  box-shadow: 0 20px 2px grey;
+}
+
+.not-pressed{
+  border-radius: 5px;
+  font-size: 24px;
+  box-shadow: 0 10px 2px grey;
+  width: 60px;
+  height: 200px;
+  border: 1px solid black;
+  background: white;
+}
+
+.recorder{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.recorder-buttons{
+  width: 220px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.jukebox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.tracks{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.track{
+  display: flex;
+  width: 580px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.track-buttons{
+  width: 430px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.track-name{
+  font-size: 20px;
 }

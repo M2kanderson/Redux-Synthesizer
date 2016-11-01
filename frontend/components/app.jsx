@@ -5,6 +5,7 @@ import JukeboxContainer from "./jukebox/jukebox_container";
 
 const App = () => (
   <div className='app'>
+    <h1>Synthesizer</h1>
     <SynthContainer></SynthContainer>
     <RecorderContainer></RecorderContainer>
     <JukeboxContainer></JukeboxContainer>
